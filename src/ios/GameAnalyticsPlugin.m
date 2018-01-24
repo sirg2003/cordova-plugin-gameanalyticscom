@@ -10,18 +10,21 @@
     NSString *gameSecretString = [command.arguments objectAtIndex:1];
     [GameAnalytics initializeWithGameKey:gameKeyString gameSecret:gameSecretString];
 }
-
 - (void) configureBuild:(CDVInvokedUrlCommand*)command {
-
+    NSString *buildString = [command.arguments objectAtIndex:0];
+    [GameAnalytics configureBuild:buildString];
 }
 - (void) configureSdkGameEngineVersion:(CDVInvokedUrlCommand*)command {
-
+    NSString *gameEngineSdkVersionString = [command.arguments objectAtIndex:0];
+    [GameAnalytics configureSdkVersion:gameEngineSdkVersionString];
 }
 - (void) configureGameEngineVersion:(CDVInvokedUrlCommand*)command {
-
+    NSString *gameEngineVersionString = [command.arguments objectAtIndex:0];
+    [GameAnalytics configureEngineVersion:gameEngineVersionString];
 }
 - (void) configureUserId:(CDVInvokedUrlCommand*)command {
-
+    NSString *userIdString = [command.arguments objectAtIndex:0];
+    [GameAnalytics configureUserId:userIdString];
 }
 
 - (void) addBusinessEvent:(CDVInvokedUrlCommand*)command {

@@ -30,7 +30,7 @@
 
 - (void) addBusinessEvent:(CDVInvokedUrlCommand*)command {
     NSString *currencyString = [command.arguments objectAtIndex:0];
-    NSInteger *amountInteger = [command.arguments objectAtIndex:1];
+    NSInteger amountInteger = [command.arguments objectAtIndex:1];
     NSString *itemTypeString = [command.arguments objectAtIndex:2];
     NSString *itemIdString = [command.arguments objectAtIndex:3];
     NSString *cartTypeString = [command.arguments objectAtIndex:4];
@@ -45,7 +45,7 @@
 }
 - (void) addBusinessEventWithReceipt:(CDVInvokedUrlCommand*)command {
     NSString *currencyString = [command.arguments objectAtIndex:0];
-    NSInteger *amountInteger = [command.arguments objectAtIndex:1];
+    NSInteger amountInteger = [command.arguments objectAtIndex:1];
     NSString *itemTypeString = [command.arguments objectAtIndex:2];
     NSString *itemIdString = [command.arguments objectAtIndex:3];
     NSString *cartTypeString = [command.arguments objectAtIndex:4];
@@ -123,19 +123,19 @@
 - (void) configureAvailableCustomDimensions01:(CDVInvokedUrlCommand*)command {
     NSString *jsonString = [command.arguments objectAtIndex:0];
     NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     [GameAnalytics configureAvailableCustomDimensions01:json];
 }
 - (void) configureAvailableCustomDimensions02:(CDVInvokedUrlCommand*)command {
     NSString *jsonString = [command.arguments objectAtIndex:0];
     NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     [GameAnalytics configureAvailableCustomDimensions02:json];
 }
 - (void) configureAvailableCustomDimensions03:(CDVInvokedUrlCommand*)command {
     NSString *jsonString = [command.arguments objectAtIndex:0];
     NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     [GameAnalytics configureAvailableCustomDimensions03:json];
 }
 - (void) setCustomDimension01:(CDVInvokedUrlCommand*)command {
@@ -156,18 +156,19 @@
     [GameAnalytics setFacebookId:facebookIdString];
 }
 - (void) setGender:(CDVInvokedUrlCommand*)command {
-    NSInteger *gender = [command.arguments objectAtIndex:0];
-    if(gender == 1)
-    {
-        [GameAnalytics setGender:@"male"];
-    }
-    else if(gender == 2)
-    {
-        [GameAnalytics setGender:@"female"];
+    switch ([[[command.arguments] objectAtIndex:0] integerValue]) {
+        case 1:
+            [GameAnalytics setGender:@"male"];
+            break;
+        case 2:
+            [GameAnalytics setGender:@"female"];
+            break;
+        default:
+            break;
     }
 }
 - (void) setBirthYear:(CDVInvokedUrlCommand*)command {
-    NSInteger *birthYearInteger = [command.arguments objectAtIndex:0];
+    NSInteger birthYearInteger = [command.arguments objectAtIndex:0];
     [GameAnalytics setBirthYear:birthYearInteger];
 }
 

@@ -63,7 +63,7 @@
     NSNumber *amountNumber = [command.arguments objectAtIndex:1];
     NSString *itemTypeString = [command.arguments objectAtIndex:2];
     NSString *itemIdString = [command.arguments objectAtIndex:3];
-    int flowTypeInt = [command.arguments objectAtIndex:4];
+    NSInteger flowTypeInt = [command.arguments objectAtIndex:4];
     
     [GameAnalytics addResourceEventWithFlowType:(GAResourceFlowType)flowTypeInt
                                        currency:currencyString
@@ -75,7 +75,7 @@
     NSString *progression01String = [command.arguments objectAtIndex:0];
     NSString *progression02String = [command.arguments objectAtIndex:1];
     NSString *progression03String = [command.arguments objectAtIndex:2];
-    int progressionStatusInt = [command.arguments objectAtIndex:3];
+    NSInteger progressionStatusInt = [command.arguments objectAtIndex:3];
     
     [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatusInt
                                               progression01:progression01String
@@ -86,8 +86,8 @@
     NSString *progression01String = [command.arguments objectAtIndex:0];
     NSString *progression02String = [command.arguments objectAtIndex:1];
     NSString *progression03String = [command.arguments objectAtIndex:2];
-    int progressionStatusInt = [command.arguments objectAtIndex:3];
-    int scoreInt = [command.arguments objectAtIndex:4];
+    NSInteger progressionStatusInt = [command.arguments objectAtIndex:3];
+    NSInteger scoreInt = [command.arguments objectAtIndex:4];
     
     [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatusInt
                                               progression01:progression01String
@@ -122,20 +122,25 @@
 
 - (void) configureAvailableCustomDimensions01:(CDVInvokedUrlCommand*)command {
     NSString *jsonString = [command.arguments objectAtIndex:0];
-    NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
+                                                     options:kNilOptions
+                                                       error:nil];
     [GameAnalytics configureAvailableCustomDimensions01:json];
 }
 - (void) configureAvailableCustomDimensions02:(CDVInvokedUrlCommand*)command {
     NSString *jsonString = [command.arguments objectAtIndex:0];
-    NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSString *jsonString = [command.arguments objectAtIndex:0];
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
+                                                     options:kNilOptions
+                                                       error:nil];
     [GameAnalytics configureAvailableCustomDimensions02:json];
 }
 - (void) configureAvailableCustomDimensions03:(CDVInvokedUrlCommand*)command {
     NSString *jsonString = [command.arguments objectAtIndex:0];
-    NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSString *jsonString = [command.arguments objectAtIndex:0];
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
+                                                     options:kNilOptions
+                                                       error:nil];
     [GameAnalytics configureAvailableCustomDimensions03:json];
 }
 - (void) setCustomDimension01:(CDVInvokedUrlCommand*)command {
@@ -156,15 +161,14 @@
     [GameAnalytics setFacebookId:facebookIdString];
 }
 - (void) setGender:(CDVInvokedUrlCommand*)command {
-    switch ([[[command.arguments] objectAtIndex:0] integerValue]) {
-        case 1:
-            [GameAnalytics setGender:@"male"];
-            break;
-        case 2:
-            [GameAnalytics setGender:@"female"];
-            break;
-        default:
-            break;
+    NSInteger gender = [command.arguments objectAtIndex:0];
+    if(gender == 1)
+    {
+        [GameAnalytics setGender:@"male"];
+    }
+    else if(gender == 2)
+    {
+        [GameAnalytics setGender:@"female"];
     }
 }
 - (void) setBirthYear:(CDVInvokedUrlCommand*)command {

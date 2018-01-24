@@ -15,8 +15,7 @@
     [GameAnalytics configureBuild:buildString];
 }
 - (void) configureSdkGameEngineVersion:(CDVInvokedUrlCommand*)command {
-    NSString *gameEngineSdkVersionString = [command.arguments objectAtIndex:0];
-    [GameAnalytics configureSdkVersion:gameEngineSdkVersionString];
+
 }
 - (void) configureGameEngineVersion:(CDVInvokedUrlCommand*)command {
     NSString *gameEngineVersionString = [command.arguments objectAtIndex:0];

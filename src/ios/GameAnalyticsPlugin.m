@@ -6,7 +6,9 @@
 // interface implementation
 
 - (void) initialize:(CDVInvokedUrlCommand*)command {
-
+    NSString *gameKeyString = [command.arguments objectAtIndex:0];
+    NSString *gameSecretString = [command.arguments objectAtIndex:1];
+    [GameAnalytics initializeWithGameKey:gameKeyString gameSecret:gameSecretString];
 }
 
 - (void) configureBuild:(CDVInvokedUrlCommand*)command {

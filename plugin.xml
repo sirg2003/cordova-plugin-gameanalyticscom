@@ -37,6 +37,12 @@
         </feature>
       </config-file>
 
+      <framework src="SystemConfiguration.framework" />
+      <framework src="CoreData.framework" />
+      <framework src="AdSupport.framework" />
+      <framework src="libz.dylib" />
+      <framework src="libsqlite3.dylib" />
+
       <header-file src="src/ios/GameAnalyticsPlugin.h" />
       <source-file src="src/ios/GameAnalyticsPlugin.m" />
       

@@ -55,7 +55,17 @@
                                         receipt:receiptString];
 }
 - (void) addResourceEvent:(CDVInvokedUrlCommand*)command {
-
+    NSString *currencyString = [command.arguments objectAtIndex:0];
+    NSNumber *amountNumber = [command.arguments objectAtIndex:1];
+    NSString *itemTypeString = [command.arguments objectAtIndex:2];
+    NSString *itemIdString = [command.arguments objectAtIndex:3];
+    NSInteger flowTypeInt = [command.arguments objectAtIndex:4];
+    
+    [GameAnalytics addResourceEventWithFlowType:(GAResourceFlowType)flowTypeInt
+                                       currency:currencyString
+                                         amount:amountNumber
+                                       itemType:itemTypeString
+                                         itemId:itemIdString];
 }
 - (void) addProgressionEvent:(CDVInvokedUrlCommand*)command {
 

@@ -92,10 +92,13 @@
                                               score:scoreInt];
 }
 - (void) addDesignEvent:(CDVInvokedUrlCommand*)command {
-
+    NSString *eventIdString = [command.arguments objectAtIndex:0];
+    [GameAnalytics addDesignEventWithEventId:eventIdString value:nil];
 }
 - (void) addDesignEventWithValue:(CDVInvokedUrlCommand*)command {
-
+    NSString *eventIdString = [command.arguments objectAtIndex:0];
+    NSNumber *valueNumber = [command.arguments objectAtIndex:1];
+    [GameAnalytics addDesignEventWithEventId:eventIdString value:valueNumber];
 }
 
 - (void) addErrorEvent:(CDVInvokedUrlCommand*)command {

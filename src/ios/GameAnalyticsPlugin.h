@@ -5,7 +5,6 @@
 - (void) initialize:(CDVInvokedUrlCommand*)command;
 
 - (void) configureBuild:(CDVInvokedUrlCommand*)command;
-- (void) configureSdkGameEngineVersion:(CDVInvokedUrlCommand*)command;
 - (void) configureGameEngineVersion:(CDVInvokedUrlCommand*)command;
 - (void) configureUserId:(CDVInvokedUrlCommand*)command;
 

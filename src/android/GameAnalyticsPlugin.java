@@ -50,7 +50,6 @@ public class GameAnalyticsPlugin extends CordovaPlugin {
         GameAnalytics.configureBuild(build);
         callback.success(); // Thread-safe.
         return true;
-    } else if (action.equals("configureSdkGameEngineVersion")) {
     } else if (action.equals("configureGameEngineVersion")) {
         String version = args.getString(0);
         GameAnalytics.configureGameEngineVersion(version);

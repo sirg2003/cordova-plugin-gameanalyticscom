@@ -14,7 +14,6 @@
     NSString *buildString = [command.arguments objectAtIndex:0];
     [GameAnalytics configureBuild:buildString];
 }
-- (void) configureSdkGameEngineVersion:(CDVInvokedUrlCommand*)command {}
 - (void) configureGameEngineVersion:(CDVInvokedUrlCommand*)command {
     NSString *gameEngineVersionString = [command.arguments objectAtIndex:0];
     [GameAnalytics configureEngineVersion:gameEngineVersionString];
@@ -155,7 +154,15 @@
     [GameAnalytics setFacebookId:facebookIdString];
 }
 - (void) setGender:(CDVInvokedUrlCommand*)command {
-
+    NSInteger gender = [command.arguments objectAtIndex:0];
+    if(gender == 1)
+    {
+        [GameAnalytics setGender:@"male"];
+    }
+    else if(gender == 2)
+    {
+        [GameAnalytics setGender:@"female"];
+    }
 }
 - (void) setBirthYear:(CDVInvokedUrlCommand*)command {
     NSInteger birthYearInteger = [command.arguments objectAtIndex:0];

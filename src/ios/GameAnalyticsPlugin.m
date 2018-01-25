@@ -40,7 +40,19 @@
                                         receipt:receiptString];
 }
 - (void) addBusinessEventWithReceipt:(CDVInvokedUrlCommand*)command {
-
+    NSString *currencyString = [command.arguments objectAtIndex:0];
+    NSInteger amountInteger = [command.arguments objectAtIndex:1];
+    NSString *itemTypeString = [command.arguments objectAtIndex:2];
+    NSString *itemIdString = [command.arguments objectAtIndex:3];
+    NSString *cartTypeString = [command.arguments objectAtIndex:4];
+    NSString *receiptString = [command.arguments objectAtIndex:5];
+    
+    [GameAnalytics addBusinessEventWithCurrency:currencyString
+                                         amount:amountInteger
+                                       itemType:itemTypeString
+                                         itemId:itemIdString
+                                       cartType:cartTypeString
+                                        receipt:receiptString];
 }
 - (void) addResourceEvent:(CDVInvokedUrlCommand*)command {
 

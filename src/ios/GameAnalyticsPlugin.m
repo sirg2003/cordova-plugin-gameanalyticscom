@@ -68,10 +68,28 @@
                                          itemId:itemIdString];
 }
 - (void) addProgressionEvent:(CDVInvokedUrlCommand*)command {
-
+    NSString *progression01String = [command.arguments objectAtIndex:0];
+    NSString *progression02String = [command.arguments objectAtIndex:1];
+    NSString *progression03String = [command.arguments objectAtIndex:2];
+    NSInteger progressionStatusInt = [command.arguments objectAtIndex:3];
+    
+    [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatusInt
+                                              progression01:progression01String
+                                              progression02:progression02String
+                                              progression03:progression03String];
 }
 - (void) addProgressionEventWithScore:(CDVInvokedUrlCommand*)command {
-
+    NSString *progression01String = [command.arguments objectAtIndex:0];
+    NSString *progression02String = [command.arguments objectAtIndex:1];
+    NSString *progression03String = [command.arguments objectAtIndex:2];
+    NSInteger progressionStatusInt = [command.arguments objectAtIndex:3];
+    NSInteger scoreInt = [command.arguments objectAtIndex:4];
+    
+    [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatusInt
+                                              progression01:progression01String
+                                              progression02:progression02String
+                                              progression03:progression03String
+                                              score:scoreInt];
 }
 - (void) addDesignEvent:(CDVInvokedUrlCommand*)command {
 

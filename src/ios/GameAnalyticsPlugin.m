@@ -102,7 +102,9 @@
 }
 
 - (void) addErrorEvent:(CDVInvokedUrlCommand*)command {
-
+    NSString *messageString = [command.arguments objectAtIndex:0];
+    NSInteger severityInt = [command.arguments objectAtIndex:1];
+    [GameAnalytics addErrorEventWithSeverity:(GAErrorSeverity)severityInt message:messageString];
 }
 - (void) setEnabledInfoLog:(CDVInvokedUrlCommand*)command {
 

@@ -124,29 +124,42 @@
     [GameAnalytics configureAvailableCustomDimensions01:json];
 }
 - (void) configureAvailableCustomDimensions02:(CDVInvokedUrlCommand*)command {
-
+    NSString *jsonString = [command.arguments objectAtIndex:0];
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
+                                                     options:kNilOptions
+                                                       error:nil];
+    [GameAnalytics configureAvailableCustomDimensions02:json];
 }
 - (void) configureAvailableCustomDimensions03:(CDVInvokedUrlCommand*)command {
-
+    NSString *jsonString = [command.arguments objectAtIndex:0];
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
+                                                     options:kNilOptions
+                                                       error:nil];
+    [GameAnalytics configureAvailableCustomDimensions03:json];
 }
 - (void) setCustomDimension01:(CDVInvokedUrlCommand*)command {
-
+    NSString *customDimensionString = [command.arguments objectAtIndex:0];
+    [GameAnalytics setCustomDimension01:customDimensionString];
 }
 - (void) setCustomDimension02:(CDVInvokedUrlCommand*)command {
-
+    NSString *customDimensionString = [command.arguments objectAtIndex:0];
+    [GameAnalytics setCustomDimension02:customDimensionString];
 }
 - (void) setCustomDimension03:(CDVInvokedUrlCommand*)command {
-
+    NSString *customDimensionString = [command.arguments objectAtIndex:0];
+    [GameAnalytics setCustomDimension03:customDimensionString];
 }
 
 - (void) setFacebookId:(CDVInvokedUrlCommand*)command {
-
+    NSString *facebookIdString = [command.arguments objectAtIndex:0];
+    [GameAnalytics setFacebookId:facebookIdString];
 }
 - (void) setGender:(CDVInvokedUrlCommand*)command {
 
 }
 - (void) setBirthYear:(CDVInvokedUrlCommand*)command {
-
+    NSInteger birthYearInteger = [command.arguments objectAtIndex:0];
+    [GameAnalytics setBirthYear:birthYearInteger];
 }
 
 - (void) startSession:(CDVInvokedUrlCommand*)command {

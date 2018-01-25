@@ -107,13 +107,13 @@
     [GameAnalytics addErrorEventWithSeverity:(GAErrorSeverity)severityInt message:messageString];
 }
 - (void) setEnabledInfoLog:(CDVInvokedUrlCommand*)command {
-
+    [GameAnalytics setEnabledInfoLog:TRUE];
 }
 - (void) setEnabledVerboseLog:(CDVInvokedUrlCommand*)command {
-
+    [GameAnalytics setEnabledVerboseLog:TRUE];
 }
 - (void) setEnabledManualSessionHandling:(CDVInvokedUrlCommand*)command {
-
+    [GameAnalytics setEnabledManualSessionHandling:TRUE];
 }
 
 - (void) configureAvailableCustomDimensions01:(CDVInvokedUrlCommand*)command {

@@ -117,7 +117,11 @@
 }
 
 - (void) configureAvailableCustomDimensions01:(CDVInvokedUrlCommand*)command {
-
+    NSString *jsonString = [command.arguments objectAtIndex:0];
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
+                                                     options:kNilOptions
+                                                       error:nil];
+    [GameAnalytics configureAvailableCustomDimensions01:json];
 }
 - (void) configureAvailableCustomDimensions02:(CDVInvokedUrlCommand*)command {
 

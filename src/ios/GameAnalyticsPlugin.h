@@ -6,6 +6,7 @@
 
 - (void) configureBuild:(CDVInvokedUrlCommand*)command;
 - (void) configureGameEngineVersion:(CDVInvokedUrlCommand*)command;
+- (void) configureSdkGameEngineVersion:(CDVInvokedUrlCommand*)command;
 - (void) configureUserId:(CDVInvokedUrlCommand*)command;
 
 - (void) addBusinessEvent:(CDVInvokedUrlCommand*)command;

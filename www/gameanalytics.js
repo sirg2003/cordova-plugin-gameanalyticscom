@@ -1,113 +1,130 @@
-var GameAnalyticsPlugin = exports;
 var exec = require('cordova/exec');
+var GameAnalyticsPlugin = {};
 
-GameAnalyticsPlugin.pluginVersion = '1.0.0';
+var PLUGIN_NAME = 'GameAnalyticsPlugin';
+var PLUGIN_VERSION = 'cordova 1.1.0';
 
 GameAnalyticsPlugin.initialize = function (gameKey, gameSecret) {
-  exec(null, null, "GameAnalyticsPlugin", "initialize", [gameKey, gameSecret]);
+  //exec(success, error, 'GameAnalyticsPlugin', 'configureBuild', [arg0]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "initialize", [gameKey, gameSecret]);
 };
 
 GameAnalyticsPlugin.configureBuild = function (build) {
-  //exec(success, error, 'GameAnalyticsPlugin', 'configureBuild', [arg0]);
-  exec(null, null, "GameAnalyticsPlugin", "configureBuild", [build]);
-};
-
-GameAnalyticsPlugin.configureSdkGameEngineVersion = function (version) {
-  exec(null, null, "GameAnalyticsPlugin", "configureSdkGameEngineVersion", [version]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "configureBuild", [build]);
 };
 
 GameAnalyticsPlugin.configureGameEngineVersion = function (version) {
-  exec(null, null, "GameAnalyticsPlugin", "configureGameEngineVersion", [version]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "configureGameEngineVersion", [version]);
+};
+
+GameAnalyticsPlugin.configureSdkGameEngineVersion = function () {
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "configureSdkGameEngineVersion", [PLUGIN_VERSION]);
 };
 
 GameAnalyticsPlugin.configureUserId = function (id) {
-  exec(null, null, "GameAnalyticsPlugin", "configureUserId", [id]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "configureUserId", [id]);
 };
 
 GameAnalyticsPlugin.addBusinessEvent = function (currency, amount, itemType, itemId, cartType) {
-  exec(null, null, "GameAnalyticsPlugin", "addBusinessEvent", [currency, amount, itemType, itemId, cartType]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "addBusinessEvent", [currency, amount, itemType, itemId, cartType]);
 };
 
 GameAnalyticsPlugin.addBusinessEventWithReceipt = function (currency, amount, itemType, itemId, cartType, receipt, store, signature) {
-  exec(null, null, "GameAnalyticsPlugin", "addBusinessEventWithReceipt", [currency, amount, itemType, itemId, cartType, receipt, store, signature]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "addBusinessEventWithReceipt", [currency, amount, itemType, itemId, cartType, receipt, store, signature]);
 };
 
 GameAnalyticsPlugin.addResourceEvent = function (flowType, currency, amount, itemType, itemId) {
-  exec(null, null, "GameAnalyticsPlugin", "addResourceEvent", [flowType, currency, amount, itemType, itemId]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "addResourceEvent", [flowType, currency, amount, itemType, itemId]);
 };
 
 GameAnalyticsPlugin.addProgressionEvent = function (status, progression1, progression2, progression3) {
-  exec(null, null, "GameAnalyticsPlugin", "addProgressionEvent", [status, progression1, progression2, progression3]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "addProgressionEvent", [status, progression1, progression2, progression3]);
 };
 
 GameAnalyticsPlugin.addProgressionEventWithScore = function (status, progression1, progression2, progression3, score) {
-  exec(null, null, "GameAnalyticsPlugin", "addProgressionEventWithScore", [status, progression1, progression2, progression3, score]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "addProgressionEventWithScore", [status, progression1, progression2, progression3, score]);
 };
 
 GameAnalyticsPlugin.addDesignEvent = function (eventId) {
-  exec(null, null, "GameAnalyticsPlugin", "addDesignEvent", [eventId]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "addDesignEvent", [eventId]);
 };
 
 GameAnalyticsPlugin.addDesignEventWithValue = function (eventId, value) {
-  exec(null, null, "GameAnalyticsPlugin", "addDesignEventWithValue", [eventId, value]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "addDesignEventWithValue", [eventId, value]);
 };
 
 GameAnalyticsPlugin.addErrorEvent = function (severity, message) {
-  exec(null, null, "GameAnalyticsPlugin", "addErrorEvent", [severity, message]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "addErrorEvent", [severity, message]);
 };
 
-GameAnalyticsPlugin.setEnabledInfoLog = function () {
-  exec(null, null, "GameAnalyticsPlugin", "setEnabledInfoLog", []);
+GameAnalyticsPlugin.setEnabledInfoLog = function (flag) {
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "setEnabledInfoLog", [flag]);
 };
 
-GameAnalyticsPlugin.setEnabledVerboseLog = function () {
-  exec(null, null, "GameAnalyticsPlugin", "setEnabledVerboseLog", []);
+GameAnalyticsPlugin.setEnabledVerboseLog = function (flag) {
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "setEnabledVerboseLog", [flag]);
 };
 
-GameAnalyticsPlugin.setEnabledManualSessionHandling = function () {
-  exec(null, null, "GameAnalyticsPlugin", "setEnabledManualSessionHandling", []);
+GameAnalyticsPlugin.setEnabledManualSessionHandling = function (flag) {
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "setEnabledManualSessionHandling", [flag]);
 };
 
 GameAnalyticsPlugin.configureAvailableCustomDimensions01 = function (json) {
-  exec(null, null, "GameAnalyticsPlugin", "configureAvailableCustomDimensions01", [json]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "configureAvailableCustomDimensions01", [json]);
 };
 
 GameAnalyticsPlugin.configureAvailableCustomDimensions02 = function (json) {
-  exec(null, null, "GameAnalyticsPlugin", "configureAvailableCustomDimensions02", [json]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "configureAvailableCustomDimensions02", [json]);
 };
 
 GameAnalyticsPlugin.configureAvailableCustomDimensions03 = function (json) {
-  exec(null, null, "GameAnalyticsPlugin", "configureAvailableCustomDimensions03", [json]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "configureAvailableCustomDimensions03", [json]);
 };
 
 GameAnalyticsPlugin.setCustomDimension01 = function (dimension) {
-  exec(null, null, "GameAnalyticsPlugin", "setCustomDimension01", [dimension]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "setCustomDimension01", [dimension]);
 };
 
 GameAnalyticsPlugin.setCustomDimension02 = function (dimension) {
-  exec(null, null, "GameAnalyticsPlugin", "setCustomDimension02", [dimension]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "setCustomDimension02", [dimension]);
 };
 
 GameAnalyticsPlugin.setCustomDimension03 = function (dimension) {
-  exec(null, null, "GameAnalyticsPlugin", "setCustomDimension03", [dimension]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "setCustomDimension03", [dimension]);
 };
 
 GameAnalyticsPlugin.setFacebookId = function (id) {
-  exec(null, null, "GameAnalyticsPlugin", "setFacebookId", [id]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "setFacebookId", [id]);
 };
 
 GameAnalyticsPlugin.setGender = function (gender) {
-  exec(null, null, "GameAnalyticsPlugin", "setGender", [gender]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "setGender", [gender]);
 };
 
 GameAnalyticsPlugin.setBirthYear = function (year) {
-  exec(null, null, "GameAnalyticsPlugin", "setBirthYear", [year]);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "setBirthYear", [year]);
 };
 
 GameAnalyticsPlugin.startSession = function () {
-  exec(null, null, "GameAnalyticsPlugin", "startSession", []);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "startSession", []);
 };
 
 GameAnalyticsPlugin.endSession = function () {
-  exec(null, null, "GameAnalyticsPlugin", "endSession", []);
+  exec(null, GameAnalyticsPlugin._gameAnalyticsErrorEvent, PLUGIN_NAME, "endSession", []);
 };
+
+
+/******************************************************************************************************************/
+/*                                                PRIVATE/INTERNAL                                                */
+/******************************************************************************************************************/
+
+/**
+ * Error callback for AudioInputCapture start
+ * @private
+ */
+
+GameAnalyticsPlugin._gameAnalyticsErrorEvent = function (e) {
+    cordova.fireWindowEvent("gameanalyticserror", {message: e});
+};
+
+module.exports = GameAnalyticsPlugin;

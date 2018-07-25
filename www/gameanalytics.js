@@ -2,7 +2,7 @@ var exec = require('cordova/exec');
 var GameAnalyticsPlugin = {};
 
 var PLUGIN_NAME = 'GameAnalyticsPlugin';
-var PLUGIN_VERSION = 'cordova 1.1.0';
+var PLUGIN_VERSION = 'cordova 1.1.1';
 
 GameAnalyticsPlugin.initialize = function (gameKey, gameSecret) {
   //exec(success, error, 'GameAnalyticsPlugin', 'configureBuild', [arg0]);

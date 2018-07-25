@@ -13,13 +13,13 @@
 }
 - (void) configureBuild:(CDVInvokedUrlCommand*)command
 {
-    NSString *buildString = [command.arguments objectAtIndex:0];
-    [GameAnalytics configureBuild:buildString];
+    NSString *build = [command.arguments objectAtIndex:0];
+    [GameAnalytics configureBuild:build];
 }
 - (void) configureGameEngineVersion:(CDVInvokedUrlCommand*)command
 {
-    NSString *gameEngineVersionString = [command.arguments objectAtIndex:0];
-    [GameAnalytics configureEngineVersion:gameEngineVersionString];
+    NSString *gameEngineVersion = [command.arguments objectAtIndex:0];
+    [GameAnalytics configureEngineVersion:gameEngineVersion];
 }
 - (void) configureSdkGameEngineVersion:(CDVInvokedUrlCommand*)command
 {
@@ -28,99 +28,98 @@
 }
 - (void) configureUserId:(CDVInvokedUrlCommand*)command
 {
-    NSString *userIdString = [command.arguments objectAtIndex:0];
-    [GameAnalytics configureUserId:userIdString];
+    NSString *uId = [command.arguments objectAtIndex:0];
+    [GameAnalytics configureUserId:uId];
 }
 
 - (void) addBusinessEvent:(CDVInvokedUrlCommand*)command
 {
-    NSString *currencyString = [command.arguments objectAtIndex:0];
-    NSInteger amountInteger = [command.arguments objectAtIndex:1];
-    NSString *itemTypeString = [command.arguments objectAtIndex:2];
-    NSString *itemIdString = [command.arguments objectAtIndex:3];
-    NSString *cartTypeString = [command.arguments objectAtIndex:4];
-    NSString *receiptString = nil;
+    NSString *currency = [command.arguments objectAtIndex:0];
+    NSInteger amount = [command.arguments objectAtIndex:1];
+    NSString *itemType = [command.arguments objectAtIndex:2];
+    NSString *itemId = [command.arguments objectAtIndex:3];
+    NSString *cartType = [command.arguments objectAtIndex:4];
     
-    [GameAnalytics addBusinessEventWithCurrency:currencyString
-                                         amount:amountInteger
-                                       itemType:itemTypeString
-                                         itemId:itemIdString
-                                       cartType:cartTypeString
-                                        receipt:receiptString];
+    [GameAnalytics addBusinessEventWithCurrency:currency
+                                         amount:amount
+                                       itemType:itemType
+                                         itemId:itemId
+                                       cartType:cartType
+                                        receipt:nil];
 }
 - (void) addBusinessEventWithReceipt:(CDVInvokedUrlCommand*)command
 {
-    NSString *currencyString = [command.arguments objectAtIndex:0];
-    NSInteger amountInteger = [command.arguments objectAtIndex:1];
-    NSString *itemTypeString = [command.arguments objectAtIndex:2];
-    NSString *itemIdString = [command.arguments objectAtIndex:3];
-    NSString *cartTypeString = [command.arguments objectAtIndex:4];
-    NSString *receiptString = [command.arguments objectAtIndex:5];
+    NSString *currency = [command.arguments objectAtIndex:0];
+    NSInteger amount = [command.arguments objectAtIndex:1];
+    NSString *itemType = [command.arguments objectAtIndex:2];
+    NSString *itemId = [command.arguments objectAtIndex:3];
+    NSString *cartType = [command.arguments objectAtIndex:4];
+    NSString *receipt = [command.arguments objectAtIndex:5];
     
-    [GameAnalytics addBusinessEventWithCurrency:currencyString
-                                         amount:amountInteger
-                                       itemType:itemTypeString
-                                         itemId:itemIdString
-                                       cartType:cartTypeString
-                                        receipt:receiptString];
+    [GameAnalytics addBusinessEventWithCurrency:currency
+                                         amount:amount
+                                       itemType:itemType
+                                         itemId:itemId
+                                       cartType:cartType
+                                        receipt:receipt];
 }
 - (void) addResourceEvent:(CDVInvokedUrlCommand*)command
 {
-    NSInteger flowTypeInt = [command.arguments objectAtIndex:0];
-    NSString *currencyString = [command.arguments objectAtIndex:1];
-    NSNumber *amountNumber = [command.arguments objectAtIndex:2];
-    NSString *itemTypeString = [command.arguments objectAtIndex:3];
-    NSString *itemIdString = [command.arguments objectAtIndex:4];
+    int flowType = [command.arguments objectAtIndex:0];
+    NSString *currency = [command.arguments objectAtIndex:1];
+    double *amount = [command.arguments objectAtIndex:2];
+    NSString *itemType = [command.arguments objectAtIndex:3];
+    NSString *itemId = [command.arguments objectAtIndex:4];
     
-    [GameAnalytics addResourceEventWithFlowType:flowTypeInt
-                                       currency:currencyString
-                                         amount:amountNumber
-                                       itemType:itemTypeString
-                                         itemId:itemIdString];
+    [GameAnalytics addResourceEventWithFlowType:(GAResourceFlowType)flowType
+                                       currency:currency
+                                         amount:@(amount)
+                                       itemType:itemType
+                                         itemId:itemId];
 }
 - (void) addProgressionEvent:(CDVInvokedUrlCommand*)command
 {
-    NSInteger progressionStatusInt = [command.arguments objectAtIndex:0];
-    NSString *progression01String = [command.arguments objectAtIndex:1];
-    NSString *progression02String = [command.arguments objectAtIndex:2];
-    NSString *progression03String = [command.arguments objectAtIndex:3];
+    int progressionStatus = [command.arguments objectAtIndex:0];
+    NSString *progression01 = [command.arguments objectAtIndex:1];
+    NSString *progression02 = [command.arguments objectAtIndex:2];
+    NSString *progression03 = [command.arguments objectAtIndex:3];
     
-    [GameAnalytics addProgressionEventWithProgressionStatus:progressionStatusInt
-                                              progression01:progression01String
-                                              progression02:progression02String
-                                              progression03:progression03String];
+    [GameAnalytics addProgressionEventWithProgressionStatus:progressionStatus
+                                              progression01:progression01
+                                              progression02:progression02
+                                              progression03:progression03];
 }
 - (void) addProgressionEventWithScore:(CDVInvokedUrlCommand*)command
 {
-    NSInteger progressionStatusInt = [command.arguments objectAtIndex:0];
-    NSString *progression01String = [command.arguments objectAtIndex:1];
-    NSString *progression02String = [command.arguments objectAtIndex:2];
-    NSString *progression03String = [command.arguments objectAtIndex:3];
-    NSInteger scoreInt = [command.arguments objectAtIndex:4];
+    int progressionStatus = [command.arguments objectAtIndex:0];
+    NSString *progression01 = [command.arguments objectAtIndex:1];
+    NSString *progression02 = [command.arguments objectAtIndex:2];
+    NSString *progression03 = [command.arguments objectAtIndex:3];
+    int score = [command.arguments objectAtIndex:4];
     
-    [GameAnalytics addProgressionEventWithProgressionStatus:progressionStatusInt
-                                              progression01:progression01String
-                                              progression02:progression02String
-                                              progression03:progression03String
-                                              score:scoreInt];
+    [GameAnalytics addProgressionEventWithProgressionStatus:progressionStatus
+                                              progression01:progression01
+                                              progression02:progression02
+                                              progression03:progression03
+                                              score:score];
 }
 - (void) addDesignEvent:(CDVInvokedUrlCommand*)command
 {
-    NSString *eventIdString = [command.arguments objectAtIndex:0];
-    [GameAnalytics addDesignEventWithEventId:eventIdString value:nil];
+    NSString *eventId = [command.arguments objectAtIndex:0];
+    [GameAnalytics addDesignEventWithEventId:eventId];
 }
 - (void) addDesignEventWithValue:(CDVInvokedUrlCommand*)command
 {
-    NSString *eventIdString = [command.arguments objectAtIndex:0];
-    NSNumber *valueNumber = [command.arguments objectAtIndex:1];
-    [GameAnalytics addDesignEventWithEventId:eventIdString value:valueNumber];
+    NSString *eventId = [command.arguments objectAtIndex:0];
+    double *value = [command.arguments objectAtIndex:1];
+    [GameAnalytics addDesignEventWithEventId:eventId value:@(value)];
 }
 
 - (void) addErrorEvent:(CDVInvokedUrlCommand*)command
 {
-    NSInteger severityInt = [command.arguments objectAtIndex:0];
-    NSString *messageString = [command.arguments objectAtIndex:1];
-    [GameAnalytics addErrorEventWithSeverity:severityInt message:messageString];
+    int severity = [command.arguments objectAtIndex:0];
+    NSString *message = [command.arguments objectAtIndex:1];
+    [GameAnalytics addErrorEventWithSeverity:(GAErrorSeverity)severity message:message];
 }
 - (void) setEnabledInfoLog:(CDVInvokedUrlCommand*)command
 {
@@ -140,48 +139,48 @@
 
 - (void) configureAvailableCustomDimensions01:(CDVInvokedUrlCommand*)command
 {
-    NSString *jsonString = [command.arguments objectAtIndex:0];
-    NSArray *json = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
+    NSString *json = [command.arguments objectAtIndex:0];
+    NSArray *dimensions = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding]
                                                      options:kNilOptions
                                                        error:nil];
-    [GameAnalytics configureAvailableCustomDimensions01:json];
+    [GameAnalytics configureAvailableCustomDimensions01:dimensions];
 }
 - (void) configureAvailableCustomDimensions02:(CDVInvokedUrlCommand*)command
 {
-    NSString *jsonString = [command.arguments objectAtIndex:0];
-    NSArray *json = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
+    NSString *json = [command.arguments objectAtIndex:0];
+    NSArray *dimensions = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding]
                                                      options:kNilOptions
                                                        error:nil];
-    [GameAnalytics configureAvailableCustomDimensions02:json];
+    [GameAnalytics configureAvailableCustomDimensions02:dimensions];
 }
 - (void) configureAvailableCustomDimensions03:(CDVInvokedUrlCommand*)command
 {
-    NSString *jsonString = [command.arguments objectAtIndex:0];
-    NSArray *json = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
+    NSString *json = [command.arguments objectAtIndex:0];
+    NSArray *dimensions = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding]
                                                      options:kNilOptions
                                                        error:nil];
-    [GameAnalytics configureAvailableCustomDimensions03:json];
+    [GameAnalytics configureAvailableCustomDimensions03:dimensions];
 }
 - (void) setCustomDimension01:(CDVInvokedUrlCommand*)command
 {
-    NSString *customDimensionString = [command.arguments objectAtIndex:0];
-    [GameAnalytics setCustomDimension01:customDimensionString];
+    NSString *dimension = [command.arguments objectAtIndex:0];
+    [GameAnalytics setCustomDimension01:dimension];
 }
 - (void) setCustomDimension02:(CDVInvokedUrlCommand*)command
 {
-    NSString *customDimensionString = [command.arguments objectAtIndex:0];
-    [GameAnalytics setCustomDimension02:customDimensionString];
+    NSString *dimension = [command.arguments objectAtIndex:0];
+    [GameAnalytics setCustomDimension02:dimension];
 }
 - (void) setCustomDimension03:(CDVInvokedUrlCommand*)command
 {
-    NSString *customDimensionString = [command.arguments objectAtIndex:0];
-    [GameAnalytics setCustomDimension03:customDimensionString];
+    NSString *dimension = [command.arguments objectAtIndex:0];
+    [GameAnalytics setCustomDimension03:dimension];
 }
 
 - (void) setFacebookId:(CDVInvokedUrlCommand*)command
 {
-    NSString *facebookIdString = [command.arguments objectAtIndex:0];
-    [GameAnalytics setFacebookId:facebookIdString];
+    NSString *facebookId = [command.arguments objectAtIndex:0];
+    [GameAnalytics setFacebookId:facebookId];
 }
 - (void) setGender:(CDVInvokedUrlCommand*)command
 {
@@ -190,8 +189,8 @@
 }
 - (void) setBirthYear:(CDVInvokedUrlCommand*)command
 {
-    NSInteger birthYearInteger = [command.arguments objectAtIndex:0];
-    [GameAnalytics setBirthYear:birthYearInteger];
+    int year = [command.arguments objectAtIndex:0];
+    [GameAnalytics setBirthYear:year];
 }
 
 - (void) startSession:(CDVInvokedUrlCommand*)command

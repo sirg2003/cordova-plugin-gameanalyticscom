@@ -84,7 +84,7 @@
     NSString *progression02 = [command.arguments objectAtIndex:2];
     NSString *progression03 = [command.arguments objectAtIndex:3];
     
-    [GameAnalytics addProgressionEventWithProgressionStatus:progressionStatus
+    [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatus
                                               progression01:progression01
                                               progression02:progression02
                                               progression03:progression03];
@@ -97,7 +97,7 @@
     NSString *progression03 = [command.arguments objectAtIndex:3];
     int score = [command.arguments objectAtIndex:4];
     
-    [GameAnalytics addProgressionEventWithProgressionStatus:progressionStatus
+    [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatus
                                               progression01:progression01
                                               progression02:progression02
                                               progression03:progression03

@@ -1,21 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-gameanalyticscom" version="1.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-gameanalyticscom" version="1.2.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Cordova Gameanalytics.com plugin</name>
     <description>Add native SDK libs from Gameanalytics.com to cordova app</description>
     <author>Sergey Rogozov</author>
     <keywords>cordova,plugin,gameanalytics</keywords>
     <license>MIT</license>
-    
     <js-module src="www/gameanalytics.js" name="GameAnalyticsPlugin">
       <clobbers target="GameAnalyticsPlugin" />
     </js-module>
-    
     <engines>
       <engine name="cordova" version=">=6.4.0" />
       <engine name="cordova-android" version=">=6.1.2" />
       <engine name="cordova-ios" version=">=4.3.0" />
     </engines>
- 
     <platform name="android">
       <config-file parent="/*" target="res/xml/config.xml">
         <feature name="GameAnalyticsPlugin">
@@ -29,7 +26,6 @@
       <source-file src="src/android/GameAnalyticsSDK/gameanalytics.jar" target-dir="libs" />
       <source-file src="src/android/gameanalytics.java" target-dir="src/com/gameanalytics/plugin" />
     </platform>
-
     <platform name="ios">
       <config-file parent="/*" target="config.xml">
         <feature name="GameAnalyticsPlugin">
@@ -37,17 +33,15 @@
         </feature>
       </config-file>
 
-      <framework src="SystemConfiguration.framework" />
-      <framework src="CoreData.framework" />
-      <framework src="AdSupport.framework" />
-      <framework src="libz.dylib" />
-      <framework src="libsqlite3.dylib" />
-
       <header-file src="src/ios/GameAnalyticsPlugin.h" />
       <source-file src="src/ios/GameAnalyticsPlugin.m" />
 
       <header-file src="src/ios/GameAnalyticsSDK/GameAnalytics.h" />
       <source-file src="src/ios/GameAnalyticsSDK/libGameAnalytics.a" framework="true" />
-    </platform>
 
+      <framework src="AdSupport.framework" weak="true" />
+      <framework src="SystemConfiguration.framework" weak="true" />
+      <framework src="libsqlite3.tbd" weak="true" />
+      <framework src="libz.tbd" weak="true" />
+    </platform>
 </plugin>

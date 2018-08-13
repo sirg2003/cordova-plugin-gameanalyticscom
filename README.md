@@ -16,6 +16,9 @@
 
 Changelog
 ---------
+**v.1.2.0**
+* fixed ios
+
 **v.1.1.0**
 * updated Android sdk to latest version (3.6.2)
 * updated iOS sdk to latest version (2.2.18)

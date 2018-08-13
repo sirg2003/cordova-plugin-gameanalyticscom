@@ -65,9 +65,9 @@
 }
 - (void) addResourceEvent:(CDVInvokedUrlCommand*)command
 {
-    int flowType = [command.arguments objectAtIndex:0];
+    int flowType = [[command.arguments objectAtIndex:0] intValue];
     NSString *currency = [command.arguments objectAtIndex:1];
-    double *amount = [command.arguments objectAtIndex:2];
+    double amount = [[command.arguments objectAtIndex:2] doubleValue];
     NSString *itemType = [command.arguments objectAtIndex:3];
     NSString *itemId = [command.arguments objectAtIndex:4];
     
@@ -79,25 +79,25 @@
 }
 - (void) addProgressionEvent:(CDVInvokedUrlCommand*)command
 {
-    int progressionStatus = [command.arguments objectAtIndex:0];
+    int progressionStatus = [[command.arguments objectAtIndex:0] intValue];
     NSString *progression01 = [command.arguments objectAtIndex:1];
     NSString *progression02 = [command.arguments objectAtIndex:2];
     NSString *progression03 = [command.arguments objectAtIndex:3];
     
-    [GameAnalytics addProgressionEventWithProgressionStatus:progressionStatus
+    [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatus
                                               progression01:progression01
                                               progression02:progression02
                                               progression03:progression03];
 }
 - (void) addProgressionEventWithScore:(CDVInvokedUrlCommand*)command
 {
-    int progressionStatus = [command.arguments objectAtIndex:0];
+    int progressionStatus = [[command.arguments objectAtIndex:0] intValue];
     NSString *progression01 = [command.arguments objectAtIndex:1];
     NSString *progression02 = [command.arguments objectAtIndex:2];
     NSString *progression03 = [command.arguments objectAtIndex:3];
-    int score = [command.arguments objectAtIndex:4];
+    int score = [[command.arguments objectAtIndex:4] intValue];
     
-    [GameAnalytics addProgressionEventWithProgressionStatus:progressionStatus
+    [GameAnalytics addProgressionEventWithProgressionStatus:(GAProgressionStatus)progressionStatus
                                               progression01:progression01
                                               progression02:progression02
                                               progression03:progression03
@@ -111,13 +111,13 @@
 - (void) addDesignEventWithValue:(CDVInvokedUrlCommand*)command
 {
     NSString *eventId = [command.arguments objectAtIndex:0];
-    double *value = [command.arguments objectAtIndex:1];
+    double value = [[command.arguments objectAtIndex:1] doubleValue];
     [GameAnalytics addDesignEventWithEventId:eventId value:@(value)];
 }
 
 - (void) addErrorEvent:(CDVInvokedUrlCommand*)command
 {
-    int severity = [command.arguments objectAtIndex:0];
+    int severity = [[command.arguments objectAtIndex:0] intValue];
     NSString *message = [command.arguments objectAtIndex:1];
     [GameAnalytics addErrorEventWithSeverity:(GAErrorSeverity)severity message:message];
 }
@@ -189,7 +189,7 @@
 }
 - (void) setBirthYear:(CDVInvokedUrlCommand*)command
 {
-    int year = [command.arguments objectAtIndex:0];
+    int year = [[command.arguments objectAtIndex:0] intValue];
     [GameAnalytics setBirthYear:year];
 }
 
